@@ -3,6 +3,8 @@ import "./App.css";
 
 import Home from "./pages/Home";
 import BrowseRecipes from "./pages/BrowseRecipes";
+import RecipeCateg from "./Components/Main/RecipeCateg";
+import RecipeDetails from "./pages/RecipeDetails";
 
 function App() {
   return (
@@ -11,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/BrowseRecipes" element={<BrowseRecipes />} />
+          <Route path="/RecipeDetails" element={<RecipeDetails />} />
         </Routes>
       </BrowserRouter>
    

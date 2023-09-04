@@ -1,6 +1,48 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import LatestReci from "./LatestReci";
+import { fetchData } from "../../service";
+const ImageData = [
+  {
+    id: "1",
+    img: "https://res.cloudinary.com/dt0j68vdr/image/upload/v1693807794/istockphoto-807031028-2048x2048_1_fvirpc.jpg",
+    alt: "Burger",
+  },
+  {
+    id: "2",
+    img: "https://res.cloudinary.com/dt0j68vdr/image/upload/v1693807356/istockphoto-855749956-2048x2048_1_tw2hrj.jpg",
+    alt: "fish",
+  },
+  {
+    id: "3",
+    img: "https://res.cloudinary.com/dt0j68vdr/image/upload/v1693543390/baked-chicken-breast-9C4F43W-omrrd2rhfvg4fdu0ak0dak66tq4dtitz01xfn44eqo_ccktab.jpg",
+    alt: "chicken",
+  },
+  {
+    id: "4",
+    img: "https://res.cloudinary.com/dt0j68vdr/image/upload/v1693807514/istockphoto-1077980738-2048x2048_1_d2maec.jpg",
+    alt: "paneer",
+  },
+  {
+    id: "5",
+    img: "https://res.cloudinary.com/dt0j68vdr/image/upload/v1693807647/istockphoto-1133727757-2048x2048_1_cci3b0.jpg",
+    alt: "pizza",
+  },
+];
 function RecipeCateg() {
+  const [data, setData] = useState("second");
+  const [loading, setloading] = useState(true);
+  const recipeClick = (dataaa) => {
+    setloading(true);
+    // console.log("gg", dataaa);
+    fetchData(dataaa).then((response) => {
+      setData(response);
+      console.log(response);
+      setloading(false);
+    });
+  };
+  useEffect(() => {
+    recipeClick();
+  }, []);
   return (
     <>
       <div className="container mx-auto py-20 text-center">
@@ -10,32 +52,18 @@ function RecipeCateg() {
         <div className="text-[50px] font-extrabold py-5">Recipe Categories</div>
         <div>
           <div className="flex justify-center gap-10">
-            <img
-              alt="imgLogo"
-              className="rounded-full h-44 cursor-pointer hover:rotate-[5deg] transition duration-500 ease-in-out hover:opacity-60 my-5"
-              src="https://res.cloudinary.com/dt0j68vdr/image/upload/v1693543397/appetizer-bruschetta-with-tuna-and-tomatoes-LKA5ZYU-omrs5yczemz943vxo1dqw9tztvscarh3mzggf5azkw_ezljrd.jpg"
-            />{" "}
-            <img
-              alt="imgLogo"
-              className="rounded-full h-44 cursor-pointer hover:rotate-[5deg] transition duration-500 ease-in-out hover:opacity-60 my-5"
-              src="https://res.cloudinary.com/dt0j68vdr/image/upload/v1693543393/beef-steak-tomahawk-S3JHQLN-omrts6h2r6ooajb7o7fsckvwj4sv3smiz698m6z25c_mytyec.jpg"
-            />
-            <img
-              alt="imgLogo"
-              className="rounded-full h-44 cursor-pointer hover:rotate-[5deg] transition duration-500 ease-in-out hover:opacity-60 my-5"
-              src="https://res.cloudinary.com/dt0j68vdr/image/upload/v1693543390/baked-chicken-breast-9C4F43W-omrrd2rhfvg4fdu0ak0dak66tq4dtitz01xfn44eqo_ccktab.jpg"
-            />
-            <img
-              alt="imgLogo"
-              className="rounded-full h-44 cursor-pointer hover:rotate-[5deg] transition duration-500 ease-in-out hover:opacity-60 my-5"
-              src="https://res.cloudinary.com/dt0j68vdr/image/upload/v1693543388/cooked-vegetables-according-to-chinese-recipe-PN2GKUB-omrff2jgxcsv5cfw86lk4kjvmzkfiaqk7pxv13p38g_c5ifw8.jpg"
-            />
-            <img
-              alt="imgLogo"
-              className="rounded-full h-44 cursor-pointer hover:rotate-[5deg] transition duration-500 ease-in-out hover:opacity-60 my-5"
-              src="https://res.cloudinary.com/dt0j68vdr/image/upload/v1693543387/pecan-pie-tart-in-baking-dish-traditional-festive-9WMXQ3Z-omrtq2c5dlsg64dt0sj08m3kex84sb89opewqs3y5c_p0olqf.jpg"
-            />
+            {ImageData.map((item, index) => (
+              <img
+                key={index}
+                alt={item.alt}
+                className="rounded-full h-44 cursor-pointer hover:rotate-[5deg] transition duration-500 ease-in-out hover:opacity-60 my-5"
+                src={item.img}
+                onClick={() => recipeClick(item.alt)}
+              />
+            ))}
           </div>
+
+          <LatestReci foodData={data} load={loading} />
         </div>
       </div>
     </>

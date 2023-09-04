@@ -24,10 +24,11 @@ function Header() {
             Browse Recipes
           </div>
         </Link>
-        <div className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
-          Submit Recipe
-        </div>
-     
+        <Link to={"/RecipeDetails"}>
+          <div className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
+            Submit Recipe
+          </div>
+        </Link>
         <div className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
           Login
         </div>

@@ -1,4 +1,3 @@
-import { data } from "jquery";
 
 const queryString = {
   app_id: process.env.REACT_APP_APP_ID,

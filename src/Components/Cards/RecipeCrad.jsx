@@ -34,14 +34,14 @@ function RecipeCrad(props) {
                   <FaRegFolderOpen color="green" />
                 </div>
                 <span className="cursor-pointer hover:text-red-400">
-                  Chiken
+                 {props.label}
                 </span>
               </div>
               <div className="p-4 flex align-middle items-center gap-1  border-l">
                 <div>
                   <BiStopwatch color="green" />
                 </div>
-                <span>1 hr 20 mins</span>
+                <span>{props.time} Min</span>
               </div>
             </div>
           </div>

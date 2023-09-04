@@ -10,6 +10,8 @@ function BrowseRecipes() {
   const [loading, setloading] = useState(true);
 
   const searchrecipe = (searchQ) => {
+
+    setloading(true)
     fetchData(searchQ).then((response) => {
       setData(response);
       setloading(false);
@@ -50,25 +52,7 @@ function BrowseRecipes() {
           {loading
             ? loadingData.map((item, index) => {
                 return (
-                  <div key={index} className="">
-                    {/* <div className="">
-                      <div class="border border-gray-300 shadow rounded-md p-4 max-w-sm w-full mx-auto">
-                        <div class="animate-pulse flex space-x-4">
-                          <div class="rounded-full bg-slate-200 h-10 w-10"></div>
-                          <div class="flex-1 space-y-6 py-1">
-                            <div class="h-2 bg-slate-200 rounded"></div>
-                            <div class="space-y-3">
-                              <div class="grid grid-cols-3 gap-4">
-                                <div class="h-2 bg-slate-200 rounded col-span-2"></div>
-                                <div class="h-2 bg-slate-200 rounded col-span-1"></div>
-                              </div>
-                              <div class="h-2 bg-slate-200 rounded"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> */}
-
+                  <div key={index} className="">              
                     <div className="">
                       <div className="h-full border-2 border-gray-200 rounded-lg overflow-hidden">
                         <div className="lg:h-48 bg-slate-200 md:h-36 w-full object-cover object-center"></div>
@@ -93,7 +77,6 @@ function BrowseRecipes() {
             : data &&
               data.hits.map((item, index) => (
                 <div>
-                  {console.log(item)}
                   <RecipeCrad
                     img={item.recipe.images.SMALL.url}
                     alt={item.recipe.label}
