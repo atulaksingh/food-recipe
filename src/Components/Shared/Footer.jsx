@@ -53,7 +53,10 @@ function Footer() {
             </div>
             <div className="flex align-bottom items-center gap-1">
               <div>
+              <div>
+
                 <AiFillMail size={20} color="#ff6900" />
+              </div>
               </div>
               <div className="text-[#B5B7BA] text-[16px]">
                 needhelp@thatix.com
@@ -62,7 +65,10 @@ function Footer() {
 
             <div className="flex align-bottom items-center gap-1">
               <div>
+              <div>
+
                 <AiTwotonePhone size={20} color="#ff6900" />
+              </div>
               </div>
               <div className="text-[#B5B7BA] text-[16px]">666 888 0000</div>
             </div>

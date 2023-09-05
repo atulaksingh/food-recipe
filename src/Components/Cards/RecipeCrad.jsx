@@ -8,7 +8,6 @@ function RecipeCrad(props) {
   return (
     <>
       <div  className="hover:shadow-lg transition-all ease-in-out duration-100">
-      <Link>
         <div  className="border border-gray-200 rounded-md">
           <img alt="img" className="h-64 w-full rounded-t-md" src={props.img} />
           <div>
@@ -49,7 +48,6 @@ function RecipeCrad(props) {
             </div>
           </div>
         </div>
-        </Link>
       </div>
     </>
   );
