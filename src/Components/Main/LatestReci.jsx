@@ -1,10 +1,11 @@
 import React from "react";
 import RecipeCrad from "../Cards/RecipeCrad";
+import { Link } from "react-router-dom";
 const loadingData = new Array(20).fill(1);
 function LatestReci(props) {
   const Data = props.foodData.hits;
   const Loading = props.load;
-  // console.log("pp", Loading);
+  // console.log("pp", Data[0]._links.self.href);
   return (
     <>
       <div className="container mx-auto py-10">
@@ -20,8 +21,6 @@ function LatestReci(props) {
             ? loadingData.map((item, index) => {
                 return (
                   <div key={index} className="">
-              
-
                     <div className="">
                       <div className="h-full border-2 border-gray-200 rounded-lg overflow-hidden">
                         <div className="lg:h-48 bg-slate-200 md:h-36 w-full object-cover object-center"></div>
@@ -45,14 +44,19 @@ function LatestReci(props) {
               })
             : Data &&
               Data.map((item, index) => (
-                <RecipeCrad
+                <Link
                   key={index}
-                  img={item.recipe.images.SMALL.url}
-                  alt={item.recipe.label}
-                  title={item.recipe.label}
-                  time={item.recipe.totalTime}
-                  label={item.recipe.mealType}
-                />
+                  to={`/RecipeDetails/${item.recipe.uri.substring(51)}`}
+                  className="cursor-pointer"
+                >
+                  <RecipeCrad
+                    img={item.recipe.images.SMALL.url}
+                    alt={item.recipe.label}
+                    title={item.recipe.label}
+                    time={item.recipe.totalTime}
+                    label={item.recipe.mealType}
+                  />
+                </Link>
               ))}
 
           {/* <RecipeCrad />
