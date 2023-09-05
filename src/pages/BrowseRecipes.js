@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../Components/Shared/Header";
 import RecipeCrad from "../Components/Cards/RecipeCrad";
 import { fetchData } from "../service";
+import { Link } from "react-router-dom";
 const loadingData = new Array(20).fill(1);
 function BrowseRecipes() {
   const [searchedTerm, setSearchedTerm] = useState("");
@@ -10,8 +11,7 @@ function BrowseRecipes() {
   const [loading, setloading] = useState(true);
 
   const searchrecipe = (searchQ) => {
-
-    setloading(true)
+    setloading(true);
     fetchData(searchQ).then((response) => {
       setData(response);
       setloading(false);
@@ -52,7 +52,7 @@ function BrowseRecipes() {
           {loading
             ? loadingData.map((item, index) => {
                 return (
-                  <div key={index} className="">              
+                  <div key={index} className="">
                     <div className="">
                       <div className="h-full border-2 border-gray-200 rounded-lg overflow-hidden">
                         <div className="lg:h-48 bg-slate-200 md:h-36 w-full object-cover object-center"></div>
@@ -76,12 +76,17 @@ function BrowseRecipes() {
               })
             : data &&
               data.hits.map((item, index) => (
-                <div>
-                  <RecipeCrad
-                    img={item.recipe.images.SMALL.url}
-                    alt={item.recipe.label}
-                    title={item.recipe.label}
-                  />
+                <div key={index}>
+                  <Link
+                    to={`/RecipeDetails/${item.recipe.uri.substring(51)}`}
+                    className="cursor-pointer"
+                  >
+                    <RecipeCrad
+                      img={item.recipe.images.SMALL.url}
+                      alt={item.recipe.label}
+                      title={item.recipe.label}
+                    />
+                  </Link>
                 </div>
               ))}
         </div>
