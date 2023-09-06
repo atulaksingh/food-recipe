@@ -86,7 +86,7 @@ function BrowseRecipes() {
                       alt={item.recipe.label}
                       title={item.recipe.label}
                     />
-                  </Link>
+                    </Link>
                 </div>
               ))}
         </div>

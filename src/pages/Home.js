@@ -12,7 +12,7 @@ function Home() {
       <div>
         <Header />
         <Owl />
-        <RecipeCateg  />
+        <RecipeCateg />
         <Footer />
       </div>
     </>
