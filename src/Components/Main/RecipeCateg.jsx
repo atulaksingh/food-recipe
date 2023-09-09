@@ -36,7 +36,7 @@ function RecipeCateg() {
     // console.log("gg", dataaa);
     fetchData(dataaa).then((response) => {
       setData(response);
-      console.log(response);
+      // console.log(response);
       setloading(false);
     });
   };

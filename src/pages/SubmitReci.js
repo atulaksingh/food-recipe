@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { json } from "react-router-dom";
 function SubmitReci() {
   const [data, setData] = useState([]);
   const [formData, setFormData] = useState({
@@ -8,6 +9,20 @@ function SubmitReci() {
     mealtype: "",
     maining: "",
   });
+
+
+  useEffect(() => {
+    
+    const userDataJSON = localStorage.getItem("dataKey");
+    if(userDataJSON){
+
+      const userData = JSON.parse(userDataJSON); 
+      setFormData({...formData , ...userData})
+    }
+  }, []);
+
+
+
   const handleTitle = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -17,18 +32,19 @@ function SubmitReci() {
   };
   console.log("cvc", formData);
 
-  const handleSubmit = (e) => {
-    const updatedData = [...{data}, formData];
-    console.log("dddaaa", data);
-    setData(updatedData);
-    localStorage.setItem("dataKey", JSON.stringify(updatedData));
-  };
-  useEffect(() => {
-    const userDataJSON = localStorage.getItem("dataKey");
-    const userData = JSON.parse(userDataJSON);
-    setData(userData);
-    console.log("User Data:", userData);
-  }, [formData]);
+  // const handleSubmit = (e) => {
+  //   const updatedData = [...{data}, formData];
+  //   console.log("dddaaa", data);
+  //   setData(updatedData);
+  //   localStorage.setItem("dataKey", JSON.stringify(updatedData));
+  // };
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    // course.push(formData)
+    localStorage.setItem("dataKey", JSON.stringify(formData));
+
+  }
+
   return (
     <>
       <div>
