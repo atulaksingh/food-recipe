@@ -2,33 +2,48 @@ import React, { useState } from "react";
 
 import { signInWithEmailAndPassword } from "firebase/auth";
 // import { auth } from "../firebase";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import { auth } from "../../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
+import {
+  Link,
+  useNavigate,
+} from "react-router-dom";
+import { useAuth } from "../../AuthContext/AuthContext";
 function LoginCard() {
   const navigate = useNavigate();
+  // const histry = useHistry();
   const [loginemail, setLoginEmail] = useState("");
   const [loginpassword, setLoginPassword] = useState("");
-  const [user, loading, error] = useAuthState(auth);
-  const onLogin = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  // const onLogin = (e) => {
+  //   e.preventDefault();
+  const { login } = useAuth();
+  const onLogin = async (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, loginemail, loginpassword)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
+    setIsSubmitting(true);
 
+    login(loginemail, loginpassword)
+      .then((resp) => {
+        console.log(resp);
         navigate("/home");
-        console.log(user);
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-      });
+      .catch((error) => console.log(error.message))
+      .finally(() => setIsSubmitting(false));
+    // signInWithEmailAndPassword(auth, loginemail, loginpassword)
+    //   .then((userCredential) => {
+    //     // Signed in
+    //     const user = userCredential.user;
+
+    //     navigate("/home");
+    //     console.log(user);
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     console.log(errorCode, errorMessage);
+    //   });
   };
   return (
     <>
-      <div className="my-40">
+      <div className="py-9">
         <form className="w-full max-w-md mx-auto    border pl-16 pr-16 pb-10 m-auto">
           <div className="text-3xl text-center my-10 font-bold">Sign In</div>
           <div className="md:flex md:items-center mb-6">

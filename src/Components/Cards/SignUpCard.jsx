@@ -8,7 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useAuth } from "../../AuthContext/AuthContext";
 import { error } from "jquery";
 function SignUpCard() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [signUpemail, setSignUpEmail] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
@@ -21,6 +21,7 @@ function SignUpCard() {
     register(signUpemail, signUpPassword)
       .then((resp) => {
         console.log(resp);
+        navigate("/");
       })
       .catch((error) => console.log(error.message))
       .finally(() => setIsSubmitting(false));
@@ -43,7 +44,7 @@ function SignUpCard() {
   return (
     <>
       <div>
-        <div className="my-40">
+        <div className="my-6">
           <form className="w-full max-w-md mx-auto    border pl-16 pr-16 pb-16 m-auto">
             <div className="text-3xl text-center my-10 font-bold">SignUp</div>
 

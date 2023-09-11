@@ -1,12 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { auth } from "../../firebase";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../AuthContext/AuthContext";
-// import { useAuth0 } from "@auth0/auth0-react";
 function Header() {
-
-  const {currrentUser} = useAuth()
-  console.log("ff",currrentUser)
+  const navigate = useNavigate();
+  const { currentUser, logout } = useAuth();
+  // console.log("user",user)
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
   return (
     <>
       <div className="border border-pink-300 py-7">
@@ -19,26 +21,59 @@ function Header() {
         />
       </div>
       <div className="flex gap-7 justify-center py-5">
-        <Link to={"/home"}>
-          <div className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
-            Home
-          </div>
-        </Link>
-        <Link to={"/BrowseRecipes"}>
-          <div className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
-            Browse Recipes
-          </div>
-        </Link>
-        <Link to={"/SubmitReci/"}>
-          <div className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
-            Submit Recipe
-          </div>
-        </Link>
-        <div
-            className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75"
+        {currentUser && (
+          <Link to={"/home"}>
+            <div className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
+              Home
+            </div>
+          </Link>
+        )}
+        {currentUser && (
+          <Link to={"/BrowseRecipes"}>
+            <div className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
+              Browse Recipes
+            </div>
+          </Link>
+        )}
+        {currentUser && (
+          <Link to={"/SubmitReci/"}>
+            <div className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
+              Submit Recipe
+            </div>
+          </Link>
+        )}
+        {currentUser && (
+          <Link to={"/profile"}>
+            <div className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
+              Profile
+            </div>
+          </Link>
+        )}
+        {currentUser && (
+          <Link
+            onClick={() => {
+              handleLogout();
+            }}
           >
-           s{currrentUser}
+            <div className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
+              Logout
+            </div>
+          </Link>
+        )}
+        {!currentUser && (
+          <Link to={"/"}>
+            <div className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
+              Login
+            </div>
+          </Link>
+        )}
+        {!currentUser && (
+          <Link to={"/signup"}>
+          <div className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
+            Register
           </div>
+          </Link>
+        )}
         {/* {isAuthenticated ? (
           <div    onClick={() => logout()} className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
             Logout
@@ -83,7 +118,6 @@ function Header() {
         </svg>
     </button>
   </div> */}
-
       </div>
     </>
   );
