@@ -7,7 +7,7 @@ import { useAuth } from "../AuthContext/AuthContext";
 
 function Home() {
   const { currentUser } = useAuth();
-  console.log("current", currentUser);
+  // console.log("current", currentUser);
 
   return (
     <>

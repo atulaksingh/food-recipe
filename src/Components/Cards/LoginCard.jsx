@@ -4,17 +4,18 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 // import { auth } from "../firebase";
 import {
   Link,
+  useLocation,
   useNavigate,
 } from "react-router-dom";
 import { useAuth } from "../../AuthContext/AuthContext";
 function LoginCard() {
   const navigate = useNavigate();
-  // const histry = useHistry();
+  const location = useLocation()
+  // console.log("location",location)
   const [loginemail, setLoginEmail] = useState("");
   const [loginpassword, setLoginPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // const onLogin = (e) => {
-  //   e.preventDefault();
+
   const { login } = useAuth();
   const onLogin = async (e) => {
     e.preventDefault();

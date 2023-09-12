@@ -7,7 +7,7 @@ function Header() {
   // console.log("user",user)
   const handleLogout = () => {
     logout();
-    navigate("/");
+    navigate("/login");
   };
   return (
     <>
@@ -22,7 +22,7 @@ function Header() {
       </div>
       <div className="flex gap-7 justify-center py-5">
         {currentUser && (
-          <Link to={"/home"}>
+          <Link to={"/"}>
             <div className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
               Home
             </div>
@@ -61,7 +61,7 @@ function Header() {
           </Link>
         )}
         {!currentUser && (
-          <Link to={"/"}>
+          <Link to={"/login"}>
             <div className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
               Login
             </div>

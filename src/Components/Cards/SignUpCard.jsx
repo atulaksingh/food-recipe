@@ -21,7 +21,7 @@ function SignUpCard() {
     register(signUpemail, signUpPassword)
       .then((resp) => {
         console.log(resp);
-        navigate("/");
+        navigate("/login");
       })
       .catch((error) => console.log(error.message))
       .finally(() => setIsSubmitting(false));
