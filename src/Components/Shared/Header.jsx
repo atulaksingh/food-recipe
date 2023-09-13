@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../AuthContext/AuthContext";
 function Header() {
   const navigate = useNavigate();
   const { currentUser, logout } = useAuth();
   // console.log("user",user)
+  useEffect(() => {
+
+  }, [])
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
+  
   return (
     <>
       <div className="border border-pink-300 py-7">

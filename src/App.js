@@ -10,7 +10,7 @@ import {
   redirect,
 } from "react-router-dom";
 import "./App.css";
-
+import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Home";
 import BrowseRecipes from "./pages/BrowseRecipes";
 import RecipeDetails from "./pages/RecipeDetails";
@@ -19,30 +19,63 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import AuthContextProvider, { useAuth } from "./AuthContext/AuthContext";
 import Profile from "./pages/Profile";
-import { Children, useEffect } from "react";
+import { Children, useEffect, useState } from "react";
+import { auth } from "./firebase";
 function App(props) {
   const { currentUser } = useAuth();
+  console.log("ggff",currentUser)
+
+  const [auth, setAuth] = useState(false);
+  // console.log("auth",auth)
   // const navigate = useNavigate();
+  // function ProtectedRoute(props) {
+  //   const { currentUser } = useAuth();
+  //   // const location = useLocation();
+  //   if( !currentUser ) {
+  //     return <Navigate to={"/login"} />;
+  //   }
+  //   return <Outlet />;
+  // }
   useEffect(() => {
-    if ( !currentUser) {
-      redirect("/login");
-    }
-  }, [])
-  
+    // setAuth(currentUser);
+    // ProtectedRoute()
+    // return currentUser? setAuth(true):false
+      // if(! currentUser ) {
+      //    return setAuth(true);
+      //  }
+        //  return <Outlet />;
+      
+// ProtectedRoute()
+
+  }, []);
+
   return (
     <>
       <AuthContextProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="signup" element={<SignUp />} />
-
             <Route exact path="/" element={<ProtectedRoute />}>
               <Route exact path="/" element={<Home />} />
               <Route path="/BrowseRecipes" element={<BrowseRecipes />} />
               <Route path="/RecipeDetails/:id" element={<RecipeDetails />} />
               <Route path="/profile" element={<Profile />} />
             </Route>
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                <Login />
+                 </PublicRoute>
+              }
+            />
+            <Route
+              path="signup"
+              element={
+                <PublicRoute>
+                <SignUp />
+                </PublicRoute>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </AuthContextProvider>
@@ -52,12 +85,14 @@ function App(props) {
 
 export default App;
 function ProtectedRoute(props) {
-  
   const { currentUser } = useAuth();
-  const location = useLocation();
-
-  const { path } = props;
-  console.log("path", props);
+  // const location = useLocation();
+  if (!currentUser) {
+    return <Navigate to={"/login"} />;
+  }
+  return <Outlet  />;
+  // const { path } = props;
+  // console.log("path", props);
   // if (path === "/") {
   //   return currentUser ? (
   //     <Navigate to={location.pathname ?? "/home"} />
@@ -66,16 +101,16 @@ function ProtectedRoute(props) {
   //   );
   // }
 
-  return currentUser ? (
-    <Outlet />
-  ) : (
-    <Navigate
-      to={{
-        pathname: "/login",
-        // state: { form: path },
-      }}
-    />
-  );
+  // return !currentUser ? (
+  //   <Navigate
+  //     to={{
+  //       pathname: "/login",
+  //       // state: { form: path },
+  //     }}
+  //   />
+  // ) : (
+  //   <Outlet {...props} />
+  // );
 }
 // const PrivateRoute = () => {
 //   const { currentUser } = useAuth(); // determine if authorized, from context or however you're doing it
@@ -86,3 +121,11 @@ function ProtectedRoute(props) {
 //   // currentUser === true ? <Outlet /> : <Navigate to="/" replace />;
 //   // return (currentUser === true ? <Outlet /> : <Navigate to="/" />)
 // };
+
+const PublicRoute = ({ children }) => {
+  //  const location = useLocation();
+  //  console.log("loc",location)
+  const { currentUser } = useAuth();
+  return currentUser ? <Navigate to="/" /> : children;
+};
+

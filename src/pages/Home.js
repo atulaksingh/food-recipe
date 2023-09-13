@@ -12,6 +12,7 @@ function Home() {
   return (
     <>
       <div>
+      
         <Header />
         <Owl />
         <RecipeCateg />

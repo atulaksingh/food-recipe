@@ -41,3 +41,6 @@
   color: blue;
   text-decoration: line-through;
 }
+#txtPassword{
+  -webkit-text-security:disc;
+}

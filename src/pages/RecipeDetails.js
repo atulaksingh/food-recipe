@@ -6,10 +6,10 @@ import { fetchOneData } from "../service";
 
 function RecipeDetails() {
   const [data, setData] = useState("");
-  console.log(data.recipe);
+  // console.log(data.recipe);
   const slug = useParams().id;
   const ID = slug;
-  console.log(ID);
+  // console.log(ID);
   useEffect(() => {
     fetchOneData(ID).then((response) => {
       setData(response);

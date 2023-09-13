@@ -2,15 +2,13 @@ import React, { useState } from "react";
 
 import { signInWithEmailAndPassword } from "firebase/auth";
 // import { auth } from "../firebase";
-import {
-  Link,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../AuthContext/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function LoginCard() {
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
   // console.log("location",location)
   const [loginemail, setLoginEmail] = useState("");
   const [loginpassword, setLoginPassword] = useState("");
@@ -23,10 +21,28 @@ function LoginCard() {
 
     login(loginemail, loginpassword)
       .then((resp) => {
-        console.log(resp);
-        navigate("/home");
+        // console.log(resp);
+        toast.success(
+          "Login Success",
+          { autoClose: 1500 },
+          {
+            position: toast.POSITION.TOP_RIGHT,
+            className: "foo-bar",
+          }
+        );
+        navigate("/")
       })
-      .catch((error) => console.log(error.message))
+      // .then(() => navigate("/"))
+      .catch((error) => {
+        toast.error(
+          error.message,
+          { autoClose: 1500 },
+          {
+            position: toast.POSITION.TOP_CENTER,
+            className: "foo-bar",
+          }
+        );
+      })
       .finally(() => setIsSubmitting(false));
     // signInWithEmailAndPassword(auth, loginemail, loginpassword)
     //   .then((userCredential) => {
@@ -44,6 +60,7 @@ function LoginCard() {
   };
   return (
     <>
+      <ToastContainer />
       <div className="py-9">
         <form className="w-full max-w-md mx-auto    border pl-16 pr-16 pb-10 m-auto">
           <div className="text-3xl text-center my-10 font-bold">Sign In</div>
@@ -72,8 +89,8 @@ function LoginCard() {
             <div className="md:w-2/3">
               <input
                 className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                id="inline-password"
-                type="password"
+                id="txtPassword"
+                type="text"
                 placeholder="******************"
                 //   value={signUpPassword}
                 onChange={(e) => setLoginPassword(e.target.value)}

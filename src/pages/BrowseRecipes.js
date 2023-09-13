@@ -61,9 +61,9 @@ function BrowseRecipes() {
                           <div className="bg-slate-200 rounded-full w-2/3 animate-pulse h-3  mb-2"></div>
                           <div className="w-full rounded-full mb-4 h-6 animate-pulse bg-slate-200"></div>
 
-                          <div class="animate-pulse flex space-x-4 align-middle items-center">
-                            <div class="rounded-full bg-slate-200 h-10 w-14"></div>
-                            <div class="h-5 bg-slate-200 rounded  w-full"></div>
+                          <div className="animate-pulse flex space-x-4 align-middle items-center">
+                            <div className="rounded-full bg-slate-200 h-10 w-14"></div>
+                            <div className="h-5 bg-slate-200 rounded  w-full"></div>
                           </div>
                         </div>
                         <div className="flex items-center flex-wrap border-t ">
@@ -76,7 +76,7 @@ function BrowseRecipes() {
                 );
               })
             : data &&
-              data.hits.map((item, index) => (
+              data?.hits?.map((item, index) => (
                 <div key={index}>
                   <Link
                     to={`/RecipeDetails/${item.recipe.uri.substring(51)}`}
