@@ -3,7 +3,6 @@ import Header from "../Components/Shared/Header";
 import RecipeCrad from "../Components/Cards/RecipeCrad";
 import { fetchData } from "../service";
 import { Link } from "react-router-dom";
-import { Auth0Provider , RedirectLoginOptions} from '@auth0/auth0-react';
 const loadingData = new Array(20).fill(1);
 function BrowseRecipes() {
   const [searchedTerm, setSearchedTerm] = useState("");
