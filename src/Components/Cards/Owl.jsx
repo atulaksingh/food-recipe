@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 // import './styles.css';
 
 // import required modules
-import {Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 function Owl() {
   return (
     <>
@@ -28,17 +28,35 @@ function Owl() {
             nextEl: "#mtnext",
           }}
           autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-        }}
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
           lazyPreloaderClass="true"
           loop={true}
           speed={1700}
           keyboard={{
             enabled: true,
           }}
-          modules={[Autoplay,Pagination, Navigation]}
+          modules={[Autoplay, Pagination, Navigation]}
           className="mySwiper"
+          breakpoints={{
+            640: {
+              slidesPerView: 1.3,
+              spaceBetween: 8,
+            },
+            768: {
+              slidesPerView: 1.4,
+              spaceBetween: 9,
+            },
+            1024: {
+              slidesPerView: 1.5,
+              spaceBetween: 10,
+            },
+            1500: {
+              slidesPerView: 1.5,
+              spaceBetween: 10,
+            },
+          }}
         >
           <SwiperSlide>
             <div>
@@ -121,7 +139,7 @@ function Owl() {
                 <div className="absolute w-full h-full  top-20 md:top-24 lg:top-40 xl:top-56 text-center  sm:px-10 ">
                   <div>
                     <h1 className="text-white text-[30px] md:text-[45px] lg:text-[60px] font-bold">
-                     Cheese Burger
+                      Cheese Burger
                     </h1>
                     <p className="text-[12px] md:text-[18px] lg:text-[20px] text-[rgba(255,255,255,.9)] font-medium w-[85%] mx-auto">
                       A handful of simple ingredients typify the fresh, vibrant
