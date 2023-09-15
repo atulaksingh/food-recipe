@@ -131,7 +131,7 @@ function Owl() {
             <div>
               <div className="relative">
                 <img
-                  className="bg-[rgba(40,41,43,.5)] h-60 sm:h-fit sm:w-fit mx-auto rounded-md"
+                  className="bg-[rgba(40,41,43,.5)] h-60 sm:h-fit sm:w-fit mx-auto rounded-md "
                   alt=""
                   src="https://res.cloudinary.com/dt0j68vdr/image/upload/v1693567564/meat-burger-with-salad-cheese-tomato-and-ketchup-KRH2A48-1200x600_xr007l.jpg"
                 />

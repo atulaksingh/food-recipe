@@ -3,15 +3,17 @@ import Header from "../Components/Shared/Header";
 import Footer from "../Components/Shared/Footer";
 import { useParams } from "react-router-dom";
 import { fetchOneData } from "../service";
+import LoadingBar from "react-top-loading-bar";
 
 function RecipeDetails() {
+  const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(100);
   const [data, setData] = useState("");
-  // console.log(data.recipe);
   const slug = useParams().id;
   const ID = slug;
-  // console.log(ID);
   useEffect(() => {
     fetchOneData(ID).then((response) => {
+      setLoading(false);
       setData(response);
     });
   }, []);
@@ -21,61 +23,82 @@ function RecipeDetails() {
       <div className="">
         <Header />
         <div className="container mx-auto">
-          <div className="px-40 py-10">
-            <h1 className="text-[18px] border-l-4 border-[#f89223] text-[#7d7f82] pl-10 my-7">
-              {data?.recipe?.label}
-            </h1>
-            <img
-              alt=""
-              className="bg-contain w-3/6"
-              src={data?.recipe?.images?.SMALL?.url}
-            />
+          <div className="mx-5 2xl:px-40 py-10">
+            {loading ? (
+              <LoadingBar
+                className="h-10"
+                color="#f11946"
+                height={5}
+                progress={progress}
+                onLoaderFinished={() => setProgress(0)}
+              />
+            ) : (
+              <>
+                <div className="flex flex-col md:flex-row align-middle items-center justify-around mb-10">
+                  {!data?.recipe?.label ? (
+                    <div className="animate-pulse">
+                      <div class="h-12 bg-slate-500 rounded col-span-1"></div>
+                    </div>
+                  ) : (
+                    <h1 className="text-[18px] border-b-4 md:border-b-0 md:border-l-4 border-[#f89223] text-[#7d7f82] md:pl-10 my-7">
+                      {data?.recipe?.label}
+                    </h1>
+                  )}
 
-            <div className="">
-              <div className="flex gap-10">
-                <div className="text-[22px] font-[600] text-[#2e2f31] my-3">
-                  Main Ingredients
+                  {!data?.recipe?.dishType ? (
+                    <div className="animate-pulse">
+                      <div class="h-12 bg-slate-500 rounded col-span-1"></div>
+                    </div>
+                  ) : (
+                    <div className="text-[18px]  text-[#7d7f82] my-3">
+                      Dish Type :{" "}
+                      <span className="">{data?.recipe?.dishType}</span>
+                    </div>
+                  )}
+
+                  {!data?.recipe?.mealType ? (
+                    <div className="animate-pulse">
+                      <div class="h-12 bg-slate-500 rounded col-span-1"></div>
+                    </div>
+                  ) : (
+                    <div className="text-[18px]  text-[#7d7f82] my-3">
+                      Dish Type :{" "}
+                      <span className="">{data?.recipe?.mealType}</span>
+                    </div>
+                  )}
                 </div>
-                <div className="text-[22px] font-[600] text-[#2e2f31] my-3">
-                  Dish Type : <span className="text-gray-500">{data?.recipe?.dishType}</span>
-                </div>
-                <div className="text-[22px] font-[600] text-[#2e2f31] my-3">
-                  Meal Type : <span className="text-gray-500">{data?.recipe?.mealType}</span>
-                </div>
-              </div>
-              <div className="block">
-                <div className="mt-2">
-                  <div className="grid grid-cols-2">
-                    {data?.recipe?.ingredients.map((item, index) => (
-                      <div key={index}>
-                        <label className="inline-flex items-center my-1 text-[#7d7f82]">
-                          <input
-                            type="checkbox"
-                            className="w-5 h-5 text-green-600 border-0 rounded-md focus:ring-0"
-                            id="cbox3"
-                          />
-                          <br />
-                          <span className="ml-2">{item.text}</span>
-                        </label>
+                <div className=" grid md:grid-cols-2 gap-10">
+                  <div>
+                    <img
+                      alt=""
+                      className="bg-contain w-full max-w-xs mx-auto md:max-w-md rounded-full"
+                      src={data?.recipe?.images?.SMALL?.url}
+                    />
+                  </div>
+
+                  <div className="m-auto">
+                    <div className="flex gap-10">
+                      <div className="text-[22px] font-[600] text-[#2e2f31] mb-3">
+                        Main Ingredients
                       </div>
-                    ))}
+                    </div>
+                    <div className="block">
+                      <div className="mt-2">
+                        <div className="grid grid-cols-1 mx-auto">
+                          {data?.recipe?.ingredients.map((item, index) => (
+                            <div key={index}>
+                              <ul className="list-outside list-disc  mx-5">
+                                <li>{item.text}</li>
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div>
-              {/* <div className="text-[22px] text-[#2e2f31] font-[600] my-3">
-                Directions
-              </div>
-              <div className="flex gap-2 align-middle items-center">
-                <div className="border-gray-600 bg-gray-500 text-white justify-center rounded-full flex align-middle items-center w-8 h-8  ">
-                  7
-                </div>
-                <p className="text-[#7d7f82] text-[17px]">
-                  Preheat the oven to 375 degrees F (190 degrees C).
-                </p>
-              </div> */}
-            </div>
+              </>
+            )}
           </div>
         </div>
         <Footer />

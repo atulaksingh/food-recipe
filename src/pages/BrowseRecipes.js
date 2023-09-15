@@ -30,8 +30,8 @@ function BrowseRecipes() {
     <>
       <Header />
 
-      <div className="mx-44">
-        <div className="py-10 flex justify-center gap-4 ">
+      <div className=" sm:mx-20 lg:mx-0 xl:mx-44">
+        <div className="py-10 flex justify-center gap-4 mx-5">
           <input
             className="appearance-none block  w-96 bg-gray-30000 text-gray-700 border border-gray-200 rounded py-3 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-200"
             id="grid-password"
@@ -48,7 +48,7 @@ function BrowseRecipes() {
             Search
           </button>
         </div>
-        <div className="grid grid-cols-3 gap-10 mx-44 my-20">
+        <div className="grid lg:grid-cols-3 gap-10 mx-5 sm:mx-20 lg:mx-20 xl:mx-44 my-20">
           {loading
             ? loadingData.map((item, index) => {
                 return (

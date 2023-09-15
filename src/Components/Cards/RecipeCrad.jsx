@@ -18,7 +18,7 @@ function RecipeCrad(props) {
                 A handful of simple ingredients typify the fresh, vibrant
                 flavors of Greek cooking.
               </div>
-              <div className="flex align-middle items-center gap-1 py-5">
+              <div className="flex align-middle items-center gap-1 py-5 ">
                 <img
                   alt="img"
                   className="rounded-full h-10"
