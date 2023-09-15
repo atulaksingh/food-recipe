@@ -27,7 +27,6 @@ export default function AuthContextProvider({ children }) {
       // console.log("uu",currentUser)
     };
   }, []);
-  // console.log("kk",currentUser)
 
   function register(email, password) {
     return createUserWithEmailAndPassword(auth, email, password);

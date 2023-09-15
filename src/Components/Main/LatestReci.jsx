@@ -8,8 +8,8 @@ function LatestReci(props) {
   // console.log("pp", Data[0]._links.self.href);
   return (
     <>
-      <div className="container mx-auto py-10">
-        <div className="grid grid-cols-3 gap-10 mx-44 my-20">
+      <div className="container  py-10">
+        <div className="grid lg:grid-cols-3 gap-10 mx-5 sm:mx-20 lg:mx-0 xl:mx-44 my-20">
           {Loading
             ? loadingData.map((item, index) => {
                 return (

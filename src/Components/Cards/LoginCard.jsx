@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 
-import { signInWithEmailAndPassword } from "firebase/auth";
 // import { auth } from "../firebase";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../AuthContext/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function LoginCard() {
   const navigate = useNavigate();
-  const location = useLocation();
   // console.log("location",location)
   const [loginemail, setLoginEmail] = useState("");
   const [loginpassword, setLoginPassword] = useState("");

@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 // import { auth } from "../firebase";
-import { Link, NavLink, Navigate, useNavigate } from "react-router-dom";
-import { auth } from "../../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { Link,  useNavigate } from "react-router-dom";
 import { useAuth } from "../../AuthContext/AuthContext";
-import { error } from "jquery";
+import { ToastContainer, toast } from "react-toastify";
 function SignUpCard() {
   const navigate = useNavigate();
 
@@ -20,29 +17,28 @@ function SignUpCard() {
 
     register(signUpemail, signUpPassword)
       .then((resp) => {
-        console.log(resp);
         navigate("/login");
+        console.log(resp);
       })
-      .catch((error) => console.log(error.message))
+      .catch((error) => {
+      
+      toast(
+        error.message,
+        { autoClose: 1500 },
+        {
+          position: toast.POSITION.TOP_CENTER,
+          className: "foo-bar",
+        }
+      )
+      
+       } )
       .finally(() => setIsSubmitting(false));
-    // await createUserWithEmailAndPassword(auth, signUpemail, signUpPassword)
-    //   .then((userCredential) => {
-    //     // Signed in
-    //     const user = userCredential.user;
-    //     console.log(user);
-    //     Navigate("/");
-    //     // ...
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     console.log(errorCode, errorMessage);
-    //     // ..
-    //   });
+    
   };
 
   return (
     <>
+        <ToastContainer />
       <div>
         <div className="my-6">
           <form className="w-full max-w-md mx-auto    border pl-16 pr-16 pb-16 m-auto">

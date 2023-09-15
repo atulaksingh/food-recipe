@@ -1,7 +1,6 @@
 import React from "react";
 import { BiStopwatch } from "react-icons/bi";
 import { FaRegFolderOpen } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 function RecipeCrad(props) {
 
@@ -15,7 +14,7 @@ function RecipeCrad(props) {
               <div className="text-[22px] text-start font-medium my-3 hover:text-orange-500 cursor-pointer line-clamp-1 overflow-clip">
                 {props?.title}
               </div>
-              <div className="text-start text-[15px] leading-5 w-72">
+              <div className="text-start text-[15px] leading-5  break-all">
                 A handful of simple ingredients typify the fresh, vibrant
                 flavors of Greek cooking.
               </div>

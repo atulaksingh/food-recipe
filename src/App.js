@@ -2,26 +2,19 @@ import {
   BrowserRouter,
   Route,
   Routes,
-  Router,
   Navigate,
   Outlet,
-  useLocation,
-  useNavigate,
-  redirect,
 } from "react-router-dom";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Home";
-import BrowseRecipes from "./pages/BrowseRecipes";
 import RecipeDetails from "./pages/RecipeDetails";
-import Local from "./pages/Local";
 import Login from "./pages/Login";
 import LoadingBar from 'react-top-loading-bar'
 import SignUp from "./pages/SignUp";
 import AuthContextProvider, { useAuth } from "./AuthContext/AuthContext";
-import Profile from "./pages/Profile";
-import { Children, useEffect, useRef, useState } from "react";
-import { auth } from "./firebase";
+import {  useState } from "react";
+import BrowseRecipes from "./pages/BrowseRecipes";
 function App(props) {
 
 
@@ -32,7 +25,7 @@ function App(props) {
           <Routes>
             <Route exact path="/" element={<ProtectedRoute />}>
               <Route exact path="/" element={<Home />} />
-              {/* <Route path="/BrowseRecipes" element={<BrowseRecipes />} /> */}
+              <Route path="/BrowseRecipes" element={<BrowseRecipes />} />
               <Route path="/RecipeDetails/:id" element={<RecipeDetails />} />
               {/* <Route path="/profile" element={<Profile />} /> */}
             </Route>

@@ -45,18 +45,18 @@ function RecipeCateg() {
   }, []);
   return (
     <>
-      <div className="container mx-auto py-20 text-center">
+      <div className="container mx-auto py-10 sm:py-20 text-center">
         <div className="text-[#F89223] text-[19px] font-medium ">
           Choose a Category
         </div>
-        <div className="text-[50px] font-extrabold py-5">Recipe Categories</div>
-        <div>
-          <div className="flex justify-center gap-10">
+        <div className="text-3xl sm:text-[50px] font-extrabold py-5">Recipe Categories</div>
+        <div className="">
+          <div className="flex sm:flex-row flex-wrap sm:flex-nowrap justify-center gap-3 sm:gap-5 lg:gap-10 sm:px-10">
             {ImageData.map((item, index) => (
               <img
                 key={index}
                 alt={item.alt}
-                className="rounded-full h-44 cursor-pointer hover:rotate-[5deg] transition duration-500 ease-in-out hover:opacity-60 my-5"
+                className="rounded-full h-16 sm:h-28 md::h-32 lg:h-44 cursor-pointer hover:rotate-[5deg] transition duration-500 ease-in-out hover:opacity-60 my-2 sm:my-5 "
                 src={item.img}
                 onClick={() => recipeClick(item.alt)}
               />

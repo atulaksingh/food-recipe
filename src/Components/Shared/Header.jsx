@@ -15,7 +15,7 @@ function Header() {
   
   return (
     <>
-      <div className="border border-pink-300 py-7">
+      <div className="border-b-2 border-t-2  border-pink-300 py-3 sm:py-7">
         <img
           alt="imglogo"
           className="mx-auto "

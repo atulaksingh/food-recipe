@@ -5,18 +5,18 @@ function Footer() {
   return (
     <>
       <div className="bg-black py-20">
-        <div className="grid grid-cols-3  mx-40">
+        <div className="grid lg:grid-cols-3 mx-3 xl:mx-20 2xl:mx-40 gap-10">
           <div>
             <h1 className="text-[20px] font-semibold text-white mb-5">
               Subscribe
             </h1>
-            <div className="text-[#B5B7BA] text-[16px] w-96 my-6">
+            <div className="text-[#B5B7BA] text-[16px] sm:w-96 my-6">
               Register and get notified about all the news & updates before it
               gets too late.
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-4 sm:gap-2">
               <input
-                className="appearance-none block w-72  text-gray-500 border border-black rounded py-3 px-4  leading-tight focus:outline-none focus:bg-white focus:border-red-400"
+                className="appearance-none w-full  sm:w-72  text-gray-500 border border-black rounded py-3 px-4  leading-tight focus:outline-none focus:bg-white focus:border-red-400"
                 id="grid-first-name"
                 type="text"
                 placeholder="Email"
@@ -43,7 +43,7 @@ function Footer() {
             <h1 className="text-[20px] font-semibold text-white mb-5">
               Contact
             </h1>
-            <div className="flex align-bottom items-center gap-1">
+            <div className="flex flex-wrap align-bottom items-center gap-1">
               <div>
                 <BiSolidMap size={20} color="#ff6900" />
               </div>

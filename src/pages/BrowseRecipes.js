@@ -24,7 +24,7 @@ function BrowseRecipes() {
       setloading(false);
       //   console.log(data)
     });
-  }, []);
+  },[]);
 
   return (
     <>
