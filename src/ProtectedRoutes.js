@@ -4,7 +4,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 const  ProtectedRoutes =({childern}) =>{
     const {currentUser} = useAuth();
-    console.log("hgh",currentUser)
+    // console.log("hgh",currentUser)
   if(!currentUser){
     return <Navigate to={"/login"} />
   }

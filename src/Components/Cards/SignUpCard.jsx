@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-// import { auth } from "../firebase";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../AuthContext/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 function SignUpCard() {
@@ -12,7 +11,6 @@ function SignUpCard() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { register } = useAuth();
-
 //onclick to signup btn calling onSubmit function 
 
   const onSubmit = async (e) => {
@@ -35,9 +33,9 @@ function SignUpCard() {
     setTimeout(() => {
       register(signUpemail, signUpPassword)
         .then((resp) => {
-          navigate("/login");
-          console.log(resp);
           setIsLoading(false);
+          return navigate("/login");
+          // console.log(resp);
         })
         .catch((error) => {
           setIsLoading(false);
@@ -105,7 +103,7 @@ function SignUpCard() {
                   onClick={onSubmit}
                   disabled={isLoading}
                 >
-                  {/* Sign Up */} {isLoading ? "Sign Up..." : "Sign Up"}
+                   {isLoading ? "Sign Up..." : "Sign Up"}
                 </button>
               </div>
             </div>

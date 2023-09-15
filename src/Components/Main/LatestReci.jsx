@@ -5,7 +5,6 @@ const loadingData = new Array(20).fill(1);
 function LatestReci(props) {
   const Data = props.foodData.hits;
   const Loading = props.load;
-  // console.log("pp", Data[0]._links.self.href);
   return (
     <>
       <div className="container  py-10">
