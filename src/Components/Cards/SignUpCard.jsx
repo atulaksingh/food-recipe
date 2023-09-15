@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // import { auth } from "../firebase";
-import { Link,  useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../AuthContext/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 function SignUpCard() {
@@ -10,35 +10,53 @@ function SignUpCard() {
   const [signUpemail, setSignUpEmail] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { register } = useAuth();
+
+//onclick to signup btn calling onSubmit function 
+
   const onSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setIsLoading(false);
 
-    register(signUpemail, signUpPassword)
-      .then((resp) => {
-        navigate("/login");
-        console.log(resp);
-      })
-      .catch((error) => {
-      
-      toast(
-        error.message,
-        { autoClose: 1500 },
+    //authentication for input value if black
+    if (signUpemail.trim() === "" && signUpPassword === "") {
+      return toast.error(
+        "Please Enter a Valid Input",
         {
           position: toast.POSITION.TOP_CENTER,
           className: "foo-bar",
-        }
-      )
-      
-       } )
-      .finally(() => setIsSubmitting(false));
-    
+        },
+        { autoClose: 1500 }
+      );
+    }
+    setIsLoading(true);
+    setIsSubmitting(true);
+    setTimeout(() => {
+      register(signUpemail, signUpPassword)
+        .then((resp) => {
+          navigate("/login");
+          console.log(resp);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          toast(
+            error.message,
+            { autoClose: 1500 },
+            {
+              position: toast.POSITION.TOP_CENTER,
+              className: "foo-bar",
+            }
+          );
+        })
+        .finally(() => setIsSubmitting(false));
+    }, 2000);
   };
 
   return (
     <>
-        <ToastContainer />
+      <ToastContainer />
       <div>
         <div className="my-6">
           <form className="w-full max-w-md mx-auto    border pl-16 pr-16 pb-16 m-auto">
@@ -85,8 +103,9 @@ function SignUpCard() {
                   className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                   type="button"
                   onClick={onSubmit}
+                  disabled={isLoading}
                 >
-                  Sign Up
+                  {/* Sign Up */} {isLoading ? "Sign Up..." : "Sign Up"}
                 </button>
               </div>
             </div>

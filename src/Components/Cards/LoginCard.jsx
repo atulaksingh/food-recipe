@@ -11,50 +11,69 @@ function LoginCard() {
   const [loginemail, setLoginEmail] = useState("");
   const [loginpassword, setLoginPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { login } = useAuth();
+  //onclick to signip btn calling onSubmit function 
+
+
   const onLogin = async (e) => {
     e.preventDefault();
+    setIsLoading(false);
+
+  //authentication for input value if black
+
+    if (loginemail.trim() === "" && loginpassword === "") {
+      return toast.error(
+        "Please Enter a Valid Input",
+        {
+          position: toast.POSITION.TOP_CENTER,
+          className: "foo-bar",
+        },
+        { autoClose: 1500 }
+      );
+    }
+
+
+
+
+    setIsLoading(true);
+
     setIsSubmitting(true);
 
-    login(loginemail, loginpassword)
-      .then((resp) => {
-        // console.log(resp);
-        toast.success(
-          "Login Success",
-          { autoClose: 1500 },
-          {
-            position: toast.POSITION.TOP_RIGHT,
-            className: "foo-bar",
-          }
-        );
-        navigate("/")
-      })
-      // .then(() => navigate("/"))
-      .catch((error) => {
-        toast.error(
-          error.message,
-          { autoClose: 1500 },
-          {
-            position: toast.POSITION.TOP_CENTER,
-            className: "foo-bar",
-          }
-        );
-      })
-      .finally(() => setIsSubmitting(false));
-    // signInWithEmailAndPassword(auth, loginemail, loginpassword)
-    //   .then((userCredential) => {
-    //     // Signed in
-    //     const user = userCredential.user;
+//setTimeout using for loading animation on click  to login buton
 
-    //     navigate("/home");
-    //     console.log(user);
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     console.log(errorCode, errorMessage);
-    //   });
+    setTimeout(() => {
+      login(loginemail, loginpassword)
+        .then((resp) => {
+          // console.log(resp);
+          toast.success(
+            "Login Success",
+            { autoClose: 1500 },
+            {
+              position: toast.POSITION.TOP_RIGHT,
+              className: "foo-bar",
+            }
+          );
+          setIsLoading(false);
+          // navigate("/");
+        })
+        // .then(() => navigate("/"))
+        .catch((error) => {
+          setIsLoading(false);
+          toast.error(
+            error.message,
+
+            {
+              position: toast.POSITION.TOP_CENTER,
+              className: "foo-bar",
+            },
+            { autoClose: 1500 }
+          );
+        })
+        .finally(() => setIsSubmitting(false));
+
+    }, 2000);
   };
   return (
     <>
@@ -73,7 +92,7 @@ function LoginCard() {
                 className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                 id="inline-full-name"
                 type="email"
-                //   value={signUpemail}
+                required
                 onChange={(e) => setLoginEmail(e.target.value)}
               />
             </div>
@@ -90,7 +109,7 @@ function LoginCard() {
                 id="txtPassword"
                 type="text"
                 placeholder="******************"
-                //   value={signUpPassword}
+                required
                 onChange={(e) => setLoginPassword(e.target.value)}
               />
             </div>
@@ -103,8 +122,9 @@ function LoginCard() {
                 className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                 type="button"
                 onClick={onLogin}
+                disabled={isLoading}
               >
-                Sign In
+                {/* Sign In */} {isLoading ? "Logging In..." : "Login"}
               </button>
             </div>
           </div>
