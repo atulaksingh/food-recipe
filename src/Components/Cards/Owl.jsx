@@ -44,12 +44,12 @@ function Owl() {
             <div>
               <div className="relative">
                 <img
-                  className="bg-[rgba(40,41,43,.5)] w-fit mx-auto"
+                  className="bg-[rgba(40,41,43,.5)] h-52 sm:h-fit sm:w-fit mx-auto"
                   alt=""
                   src="https://res.cloudinary.com/dt0j68vdr/image/upload/v1693551790/homemade-chicken-tikka-masala-AW6RTJ7-1200x600_twfrea.jpg"
                 />
                 <div className="absolute w-full h-full bg-[rgba(40,41,43,.5)] top-0 "></div>
-                <div className="absolute w-full h-full  top-11 md:top-24 lg:top-40 xl:top-56 text-center  sm:px-10 ">
+                <div className="absolute w-full h-full  top-20 md:top-24 lg:top-40 xl:top-56 text-center  sm:px-10 ">
                   <div>
                     <h1 className="text-white text-[19px] md:text-[45px] lg:text-[60px] font-bold">
                       Chicken Tikka Masala
@@ -67,12 +67,12 @@ function Owl() {
             <div>
               <div className="relative">
                 <img
-                  className="bg-[rgba(40,41,43,.5)] w-fit mx-auto"
+                  className="bg-[rgba(40,41,43,.5)] h-52 sm:h-fit sm:w-fit mx-auto"
                   alt=""
                   src="https://res.cloudinary.com/dt0j68vdr/image/upload/v1693567558/raspberry-tartlet-dessert-with-almond-flakes-34Z9TYK-1200x600_ng0xe6.jpg"
                 />
                 <div className="absolute w-full h-full bg-[rgba(40,41,43,.5)] top-0 "></div>
-                <div className="absolute w-full h-full top-11 md:top-24 lg:top-40 xl:top-56 text-center  sm:px-10 ">
+                <div className="absolute w-full h-full top-20 md:top-24 lg:top-40 xl:top-56 text-center  sm:px-10 ">
                   <div className="flex flex-col align-middle items-center">
                     <h1 className="text-white text-[19px] md:text-[45px] lg:text-[60px] font-bold">
                       Raspberry Tartlet
@@ -90,12 +90,12 @@ function Owl() {
             <div>
               <div className="relative">
                 <img
-                  className="bg-[rgba(40,41,43,.5)] w-fit mx-auto"
+                  className="bg-[rgba(40,41,43,.5)] h-52 sm:h-fit sm:w-fit mx-auto"
                   alt=""
                   src="https://res.cloudinary.com/dt0j68vdr/image/upload/v1693567561/baked-chicken-breast-9C4F43W-1200x600_ditr2e.jpg"
                 />
                 <div className="absolute w-full h-full bg-[rgba(40,41,43,.5)] top-0 "></div>
-                <div className="absolute w-full h-full top-11 md:top-24 lg:top-40 xl:top-56 text-center  sm:px-10 ">
+                <div className="absolute w-full h-full top-20 md:top-24 lg:top-40 xl:top-56 text-center  sm:px-10 ">
                   <div>
                     <h1 className="text-white text-[19px] md:text-[45px] lg:text-[60px] font-bold">
                       Baked Chicken Breast
@@ -113,12 +113,12 @@ function Owl() {
             <div>
               <div className="relative">
                 <img
-                  className="bg-[rgba(40,41,43,.5)] w-fit mx-auto"
+                  className="bg-[rgba(40,41,43,.5)] h-52 sm:h-fit sm:w-fit mx-auto"
                   alt=""
                   src="https://res.cloudinary.com/dt0j68vdr/image/upload/v1693567564/meat-burger-with-salad-cheese-tomato-and-ketchup-KRH2A48-1200x600_xr007l.jpg"
                 />
                 <div className="absolute w-full h-full bg-[rgba(40,41,43,.5)] top-0 "></div>
-                <div className="absolute w-full h-full  top-11 md:top-24 lg:top-40 xl:top-56 text-center  sm:px-10 ">
+                <div className="absolute w-full h-full  top-20 md:top-24 lg:top-40 xl:top-56 text-center  sm:px-10 ">
                   <div>
                     <h1 className="text-white text-[19px] md:text-[45px] lg:text-[60px] font-bold">
                      Cheese Burger
