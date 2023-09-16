@@ -79,7 +79,7 @@ function LoginCard() {
     <>
       <ToastContainer />
       <div className="py-9">
-        <form className="w-full max-w-md mx-auto    border pl-16 pr-16 pb-10 m-auto">
+        <form className="w-full max-w-md mx-auto    border pl-16 pr-16 pb-10 m-auto shadow-lg rounded-md">
           <div className="text-3xl text-center my-10 font-bold">Sign In</div>
           <div className="md:flex md:items-center mb-6">
             <div className="md:w-1/3">

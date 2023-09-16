@@ -57,7 +57,7 @@ function SignUpCard() {
       <ToastContainer />
       <div>
         <div className="my-6">
-          <form className="w-full max-w-md mx-auto    border pl-16 pr-16 pb-16 m-auto">
+          <form className="w-full max-w-md mx-auto    border pl-16 pr-16 pb-16 m-auto shadow-lg rounded-md">
             <div className="text-3xl text-center my-10 font-bold">SignUp</div>
 
             <div className="md:flex md:items-center mb-6">
