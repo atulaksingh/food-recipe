@@ -10,7 +10,7 @@ function RecipeCrad(props) {
         <div  className="border border-gray-200 rounded-md">
           <img alt="img" className="h-64 w-full rounded-t-md" src={props?.img} />
           <div>
-            <div className="mx-10">
+            <div className="mx-10 sm:mx-5">
               <div className="text-[22px] text-start font-medium my-3 hover:text-orange-500 cursor-pointer line-clamp-1 overflow-clip">
                 {props?.title}
               </div>

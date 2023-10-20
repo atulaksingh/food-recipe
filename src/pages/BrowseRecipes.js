@@ -48,7 +48,7 @@ function BrowseRecipes() {
             Search
           </button>
         </div>
-        <div className="grid lg:grid-cols-3 gap-10 mx-5 sm:mx-20 lg:mx-20 xl:mx-44 my-20">
+        <div className="grid lg:grid-cols-3 gap-10 mx-5 sm:mx-20 lg:mx-20  my-20">
           {loading
             ? loadingData.map((item, index) => {
                 return (

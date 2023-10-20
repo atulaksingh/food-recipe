@@ -59,7 +59,7 @@ function Header() {
               handleLogout();
             }}
           >
-            <div className="text-[17px] text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
+            <div className="text-[17px]  text-[#8c8e91] hover:text-[#ea9b5f] cursor-pointer font-semibold transition-all delay-75">
               Logout
             </div>
           </Link>

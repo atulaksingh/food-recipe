@@ -11,15 +11,21 @@ function Profile() {
   };
   return (
     <>
-        <ToastContainer />
+      <ToastContainer />
 
       <div>Profile</div>
       <div>{JSON.stringify(currentUser, null, 2)}</div>
       <div>
-        <button onClick={()=>{   toast("Custom Style Notification with css class!", {
-        position: toast.POSITION.TOP_RIGHT,
-        className: 'foo-bar'
-      });}}>Notify</button>
+        <button
+          onClick={() => {
+            toast("Custom Style Notification with css class!", {
+              position: toast.POSITION.TOP_RIGHT,
+              className: "foo-bar",
+            });
+          }}
+        >
+          Notify
+        </button>
       </div>
     </>
   );
